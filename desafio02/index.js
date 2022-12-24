@@ -89,8 +89,8 @@ class ProductManager {
     }
 }
 // Aca creo la instancia y hago una funcion asincrona llamada main asi puede ejecutarse todo correctamente.
-const computer = new ProductManager('./productos.json');
 (async main => {
+    const computer = new ProductManager('./productos.json');
     await computer.addProducts('Asus', '8GB RAM, inter core i5, etc', 130000, './img/computer', 'AW25G', 8);
     await computer.addProducts('Tablet', 'tablet de la marca Samsumg cuenta con 64g...', 70000, './img/tablet', 'DFR56', 20);
     await computer.addProducts('iphone X', 'celular de la marca apple...', 180000, './img/iphone', 'GFR4H', 15);
