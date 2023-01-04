@@ -1,0 +1,16 @@
+{
+  "name": "desafio03",
+  "version": "1.0.0",
+  "description": "Craeando mi primer servidor",
+  "main": "./src/app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Santiago Aquino",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

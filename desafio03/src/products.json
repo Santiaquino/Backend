@@ -1,0 +1,29 @@
+[
+	{
+		"id": 1,
+		"title": "Lenovo",
+		"description": "8GB RAM, inter core i5, etc",
+		"price": 130000,
+		"thumbnail": "./img/computer",
+		"code": "SA3F",
+		"stock": 8
+	},
+	{
+		"id": 2,
+		"title": "iphone X",
+		"description": "celular de la marca apple...",
+		"price": 180000,
+		"thumbnail": "./img/iphone",
+		"code": "GFR4H",
+		"stock": 15
+	},
+	{
+		"id": 3,
+		"title": "iphone X",
+		"description": "celular de la marca apple...",
+		"price": 180000,
+		"thumbnail": "./img/iphone",
+		"code": "GFR4H",
+		"stock": 15
+	}
+]
