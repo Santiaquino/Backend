@@ -7,6 +7,9 @@ const app = express();
 // puerto
 const PUERTO = 8080;
 
+// permite que se pueda enviar informacion tambien desde la URL
+app.use(express.urlencoded({extended:true}));
+
 // servidor escuchando
 app.listen(PUERTO, () => {
   console.log(`El servidor esta escuchando en el puerto: ${PUERTO}.`);
@@ -14,19 +17,29 @@ app.listen(PUERTO, () => {
 
 // primer endpoint
 app.get('/products', async (req, res) => {
-  const products = await ins.getProducts();
-  const limit = products.filter(el => el.id <= req.query.limit);
-  if (req.query.limit === undefined) {
-    res.send(JSON.stringify(products));
+  try {
+    const products = await ins.getProducts();
+    const limit = products.filter(el => el.id <= req.query.limit);
+    if (req.query.limit === undefined) {
+      res.send(JSON.stringify({products}));
+    }
+    else if (req.query.limit == 0) {
+      res.send(JSON.stringify({products}));
+    }
+    else res.send(JSON.stringify(limit));
   }
-  else if (req.query.limit == 0){
-    res.send(JSON.stringify(products));
+  catch (err) {
+    throw new Error(err);
   }
-  else res.send(JSON.stringify(limit));
 });
 
 // segundo endpoint
-app.get('/products/:pid', async(req, res) => {
-  const product = await ins.getProductById(req.params.pid);
-  res.send(JSON.stringify(product));
+app.get('/products/:pid', async (req, res) => {
+  try{
+    const product = await ins.getProductById(req.params.pid);
+    res.send(JSON.stringify(product));
+  }
+  catch (err) {
+    throw new Error(err);
+  }
 });
