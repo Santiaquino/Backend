@@ -1,4 +1,4 @@
-// importacion de la clase y creacion de una instancia
+// importacion de la clase y creacion de la instancia
 import ProductManager from './productManager.js';
 const ins = new ProductManager('./products.json');
 //importacion de express
