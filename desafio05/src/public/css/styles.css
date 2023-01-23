@@ -1,0 +1,15 @@
+h1{
+    text-align: center;
+}
+
+div{
+    margin-left: 1rem;
+}
+
+div li{
+    list-style-type: none;
+}
+
+.firstLi{
+    margin-top: 1rem;
+}
