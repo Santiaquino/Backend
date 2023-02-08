@@ -1,0 +1,20 @@
+<div class="containerInfo">
+  <input type="text" id="user" placeholder="Escriba su usuario">
+  <input type="text" id="message" placeholder="Escriba aqui su mensaje">
+  <div class="containerButtons">
+    <button type="submit" id="button">Enviar</button>
+    <button type="reset" id="delete"> Eliminar</button>
+  </div>
+</div>
+
+
+<div id="container">
+  
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chat.js"></script>
+
+<script>
+  const sockets = io.connect('http://localhost:8080/', {forceNew: true});
+</script>

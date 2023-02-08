@@ -1,0 +1,19 @@
+{
+  "name": "desafio06",
+  "version": "1.0.0",
+  "description": "realizacion del desafio 06 del curso de Backend",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Santiago Aquino",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.7",
+    "mongoose": "^6.9.0",
+    "socket.io": "^4.5.4"
+  }
+}
