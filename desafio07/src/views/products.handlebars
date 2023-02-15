@@ -1,0 +1,21 @@
+<div>
+    {{#each products}}
+    <p>{{title}}</p>
+    <p>{{description}}</p>
+    <p>{{code}}</p>
+    <p>{{price}}</p>
+    <p>{{status}}</p>
+    <p>{{stock}}</p>
+    <p>{{category}}</p>
+    <p>{{thumbnail}}</p>
+    <button>Agregar al carrito</button>
+    {{/each}}
+
+    {{#if hasPrevPage}}
+    <a href="?query={{query}}&value={{value}}&page={{prevPage}}&limit={{limit}}&sort={{sort}}"><button>Anterior</button></a>
+    {{/if}}
+
+    {{#if hasNextPage}}
+    <a href="?query={{query}}&value={{value}}&page={{nextPage}}&limit={{limit}}&sort={{sort}}"><button>Siguiente</button></a>
+    {{/if}}
+</div>
