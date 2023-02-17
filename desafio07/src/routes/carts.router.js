@@ -8,7 +8,7 @@ const ins = new CartsManager();
 router.get('/', async (req, res) => {
   try {
     const carts = await ins.getAll();
-    res.json({ status: 'success!', result: carts });
+    res.json({ status: 'success!', payload: carts });
   }
   catch (err) {
     throw new Error(err);
@@ -20,7 +20,7 @@ router.get('/:cid', async (req, res) => {
     const cid = req.params.cid;
 
     let result = await cartsModel.findOne({_id:cid});
-    res.json({ status: 'success!', result: result });
+    res.json({ status: 'success!', payload: result });
   }
   catch (err) {
     throw new Error(err);
@@ -30,7 +30,7 @@ router.get('/:cid', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const saveCart = await ins.saveCart();
-    res.json({ status: 'success!', result: saveCart });
+    res.json({ status: 'success!', payload: saveCart });
   }
   catch (err) {
     throw new Error(err);
@@ -42,11 +42,8 @@ router.post('/:cid/products/:pid', async (req, res) => {
     const cid = req.params.cid;
     const pid = req.params.pid;
 
-    let cart = await cartsModel.findOne({_id: cid});
-    cart.products.push({pid: pid});
-    await cartsModel.updateOne({_id: cid}, cart);
-
-    res.json({ status: 'success!', result: cart });
+    const result = await ins.saveProduct(cid, pid);
+    res.json({ status: 'success!', payload: result });
   }
   catch (err) {
     throw new Error(err);
@@ -56,8 +53,8 @@ router.post('/:cid/products/:pid', async (req, res) => {
 router.delete('/:cid', async (req, res) => {
   try {
     const { cid } = req.params;
-    const cart = await ins.deleteCart(cid);
-    res.json({ status: 'success!', result: cart });
+    const cart = await ins.deleteAllProducts(cid);
+    res.json({ status: 'success!', payload: cart });
   }
   catch (err) {
     throw new Error(err);
@@ -67,8 +64,8 @@ router.delete('/:cid', async (req, res) => {
 router.delete('/:cid/products/:pid', async (req, res) => {
   try {
     const { cid, pid } = req.params;
-    await ins.deleteProduct(cid, pid);
-    res.json({ status: 'success!', result: `delete the product with id: ${pid}` });
+    const result = await ins.deleteProduct(cid, pid);
+    res.json(result);
   }
   catch (err) {
     throw new Error(err);
@@ -82,7 +79,7 @@ router.put('/:cid', async (req, res) => {
 
     const newProducts = body.products;
     await ins.updateCart(cid, { products: newProducts });
-    res.json({ status: 'success!', result: newProducts });
+    res.json({ status: 'success!', payload: newProducts });
   }
   catch (err) {
     throw new Error(err);
@@ -93,8 +90,8 @@ router.put('/:cid/products/:pid', async (req, res) => {
   const { cid, pid } = req.params;
   const body = req.body;
 
-  const product = await ins.updateProduct(cid, pid, body);
-  res.json({ status: 'success!', result: product });
+  const result = await ins.updateProduct(cid, pid, body);
+  res.json(result);
 });
 
 export default router;

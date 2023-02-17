@@ -1,6 +1,15 @@
-<h1 class="titleCarts">Productos:</h1>
-<div class="containerCarts">
-    {{#each cartProducts}}
-    <li>{{this}}{{title}}</li>
+<h1>Productos en este carrito:</h1>
+<div class="containerProducts">
+    {{#each products}}
+    <div class="products">
+        <p> title: {{title}}</p>
+        <p> desc: {{description}}</p>
+        <p> code: {{code}}</p>
+        <p> price: {{price}}</p>
+        <p> status: {{status}}</p>
+        <p> stock: {{stock}}</p>
+        <p> category: {{category}}</p>
+        <p> thumbnail: {{thumbnail}}</p>
+    </div>
     {{/each}}
 </div>

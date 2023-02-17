@@ -45,9 +45,9 @@ export default class CartsManager {
     }
   };
 
-  deleteCart = async (cid) => {
+  deleteAllProducts = async (cid) => {
     try {
-      const cart = await cartsModel.findOne({ _id: cid });
+      const cart = await this.getCartById(cid);
       await this.updateCart(cid, { products: [] });
       return cart;
     }
@@ -58,20 +58,20 @@ export default class CartsManager {
 
   saveProduct = async (cid, pid) => {
     try {
-      const cart = await cartsModel.findOne({ _id: cid });
+      const cart = await this.getCartById(cid);
       const products = cart.products;
-      const newProducts = products.map(el => el.pid);
-      console.log(products);
-      console.log(newProducts)
-      const product = newProducts.find(el => el._id == pid);
+      const product = products.find(el => el.pid._id == pid);
+      const index = products.findIndex(el => el.pid._id == pid);
       if (product === undefined) {
-        products.push({pid: pid, quantity: 1});
+        products.push({ pid: pid, quantity: 1 });
+        await this.updateCart(cid, { products: products });
+        return { payload: { pid: pid, quantity: 1 } }
       }
       else {
-        products.quantity++;
+        products[index].quantity++;
+        await this.updateCart(cid, { products: products });
+        return { payload: product };
       }
-      await this.updateCart(cid, { products: products });
-      return product;
     }
     catch (err) {
       throw new Error(err);
@@ -80,10 +80,15 @@ export default class CartsManager {
 
   deleteProduct = async (cid, pid) => {
     try {
-      const cart = await cartsModel.findOne({ _id: cid });
+      const cart = await this.getCartById(cid);
       const products = cart.products;
-      const newProducts = products.filter(el => el.id != pid);
-      await this.updateCart(cid, { products: newProducts });
+      const index = products.findIndex(el => el.pid._id == pid);
+      if (index == -1) return { status: 'error', error: `The product with id: ${pid} no exists` };
+      else {
+        products.splice(index, 1);
+        await this.updateCart(cid, { products: products });
+        return { status: `success!`, message: `The product with id: ${pid} was deleted` };
+      }
     }
     catch (err) {
       throw new Error(err);
@@ -92,12 +97,15 @@ export default class CartsManager {
 
   updateProduct = async (cid, pid, obj) => {
     try {
-      const cart = await cartsModel.findOne({ _id: cid });
+      const cart = await this.getCartById(cid);
       const products = cart.products;
-      const product = products.find(el => el.id == pid);
-      product.quantity = obj.quantity || product.quantity;
-      await this.updateCart(cid, {products: products});
-      return product;
+      const index = products.findIndex(el => el.pid._id == pid);
+      if (index == -1) return { status: 'error', error: `The product with id: ${pid} no exists` };
+      else {
+        products[index].quantity = obj.quantity;
+        await this.updateCart(cid, { products: products });
+        return { status: `success!`, message: `The product with id: ${pid} updated` };
+      }
     }
     catch (err) {
       throw new Error(err)

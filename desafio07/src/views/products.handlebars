@@ -1,21 +1,27 @@
-<div>
+<h1> Productos:</h1>
+<div class="containerProducts">
     {{#each products}}
-    <p>{{title}}</p>
-    <p>{{description}}</p>
-    <p>{{code}}</p>
-    <p>{{price}}</p>
-    <p>{{status}}</p>
-    <p>{{stock}}</p>
-    <p>{{category}}</p>
-    <p>{{thumbnail}}</p>
-    <button>Agregar al carrito</button>
+    <div class="products">
+        <p>{{title}}</p>
+        <p>{{description}}</p>
+        <p>{{code}}</p>
+        <p>{{price}}</p>
+        <p>{{status}}</p>
+        <p>{{stock}}</p>
+        <p>{{category}}</p>
+        <p>{{thumbnail}}</p>
+        <button class="button" onclick={sentProduct('{{_id}}')}>Agregar</button>
+    </div>
     {{/each}}
 
     {{#if hasPrevPage}}
-    <a href="?query={{query}}&value={{value}}&page={{prevPage}}&limit={{limit}}&sort={{sort}}"><button>Anterior</button></a>
+    <a href="?query={{query}}&page={{prevPage}}&limit={{limit}}&sort={{sort}}"><button class="buttonPage">Anterior</button></a>
     {{/if}}
 
     {{#if hasNextPage}}
-    <a href="?query={{query}}&value={{value}}&page={{nextPage}}&limit={{limit}}&sort={{sort}}"><button>Siguiente</button></a>
+    <a href="?query={{query}}&page={{nextPage}}&limit={{limit}}&sort={{sort}}"><button class="buttonPage">Siguiente</button></a>
     {{/if}}
 </div>
+
+<script src="/js/products.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
