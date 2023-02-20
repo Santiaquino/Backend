@@ -1,0 +1,171 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #7286D3;
+}
+/* chat */
+
+.containerInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+#user{
+    margin-bottom: 10px;
+    border-radius: 0.5rem;
+    width: 200px;
+    padding: 0.3rem;
+}
+
+#message{ 
+    margin-bottom: 10px;
+    border-radius: 0.5rem;
+    width: 200px;
+    padding: 0.3rem;
+}
+
+.containerButtons{
+    display: flex;
+}
+
+#button{
+    border-radius: 0.5rem;
+    color: whitesmoke;
+    background-color: rgb(51, 50, 50);
+    padding: 0.4rem;
+}
+
+#delete{
+    border-radius: 0.5rem;
+    color: whitesmoke;
+    background-color: rgb(51, 50, 50);
+    padding: 0.4rem;
+    margin-left: 10px;
+}
+
+/* carts y products*/
+
+.containerCarts{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    text-align: center;
+    margin: 1rem 0 0 0;
+    font-size: 2.2rem;
+}
+
+.containerProducts{
+    display: flex;
+    height: 100vh;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 7rem;
+}
+
+.buttonPage{
+    padding: 13px;
+    background-color: #E5E0FF;
+    color: #000000;
+    border-radius: 8px;
+    margin-left: 1rem;
+    border: none;
+}
+
+.buttonPage:hover{
+    box-shadow: 4px 4px 4px #00000060;
+}
+
+.buttonPage:active{
+    background-color: #d1cbf1;
+}
+
+.navBar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.logout{
+    margin: 1rem 1rem 0.5rem 0rem;
+    padding: 3px;
+    background-color: #E5E0FF;
+    color: #000000;
+    border-radius: 8px;
+    border: none;
+}
+.logout a{
+    text-decoration: none;
+    color: #000000;
+}
+
+.logout:hover{
+    box-shadow: 2px 2.5px 2.5px #00000060;
+}
+
+.logout:active{
+    background-color: #d1cbf1;
+}
+
+.message{
+    font-weight: bold;
+    margin: 1rem 0rem 0rem 1rem;
+}
+
+/* login y register */
+
+.containerForm{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    background-color: #8EA7E9;
+    padding: 5rem;
+    border-radius: 2rem;
+    gap: 10px;
+    box-shadow: 3px 3px 3px #00000030;
+}
+
+.titleForm{
+    margin: 0 0 1rem 0;
+}
+
+.button{
+    padding: 5px;
+    background-color: #E5E0FF;
+    color: #000000;
+    border-radius: 8px;
+    margin-top: 1rem;
+    border: none;
+}
+
+.button:hover{
+    box-shadow: 2px 2px 2px #00000060;
+}
+
+.button:active{
+    background-color: #d1cbf1;
+}
+
+.messageForm a{
+    text-decoration: none;
+    color: #866fec;
+    font-weight: bold;
+}
