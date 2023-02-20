@@ -19,10 +19,7 @@ const sentProduct = async (id) => {
 
 logout.addEventListener('click', event => {
   event.preventDefault();
-  fetch('/api/sessions/logout', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
+  fetch('http://localhost:8080/api/sessions/logout')
+    .then(response => response.json())
+    .then(json => console.log(json))
 });
